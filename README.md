@@ -1,4 +1,4 @@
-# Nitro IPX image server
+# Nitro Image Process Server
 
 Example of a simple image server using Nitro [IPX](https://github.com/unjs/ipx).
 
