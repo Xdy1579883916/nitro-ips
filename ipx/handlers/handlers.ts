@@ -115,7 +115,9 @@ export const resize: Handler = {
 export const trim: Handler = {
   args: [VArgument],
   apply: (_context, pipe, threshold) => {
-    return pipe.trim(threshold);
+    return pipe.trim({
+      threshold,
+    });
   },
 };
 
@@ -176,9 +178,16 @@ export const flop: Handler = {
 
 // https://sharp.pixelplumbing.com/api-operation#sharpen
 export const sharpen: Handler = {
-  args: [VArgument, VArgument, VArgument],
-  apply: (_context, pipe, sigma, flat, jagged) => {
-    return pipe.sharpen(sigma, flat, jagged);
+  args: [VArgument, VArgument, VArgument,VArgument, VArgument, VArgument],
+  apply: (_context, pipe, sigma, m1, m2, x1, y2, y3) => {
+    return pipe.sharpen({
+      sigma,
+      m1: m1 || undefined,
+      m2: m2 || undefined,
+      x1: x1 || undefined,
+      y2: y2 || undefined,
+      y3: y3 || undefined,
+    });
   },
 };
 
@@ -257,9 +266,14 @@ export const modulate: Handler = {
 
 // https://sharp.pixelplumbing.com/api-colour#tint
 export const tint: Handler = {
-  args: [VArgument],
-  apply: (_context, pipe, rgb) => {
-    return pipe.tint(rgb);
+  args: [VArgument,VArgument,VArgument,VArgument],
+  apply: (_context, pipe, r,g,b, alpha) => {
+    return pipe.tint({
+        r: r || undefined,
+        g: g || undefined,
+        b: b || undefined,
+        alpha: alpha || undefined,
+    });
   },
 };
 
@@ -279,4 +293,5 @@ export const b = background;
 export const w = width;
 export const h = height;
 export const s = resize;
+export const r = rotate;
 export const pos = position;
