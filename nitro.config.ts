@@ -21,6 +21,8 @@ export default defineNitroConfig({
         }
     },
     // debug: true,
-    runtimeConfig: {},
+    runtimeConfig: {
+        autoHD: true,
+    },
     compatibilityDate: '2024-08-30',
 });

@@ -1,5 +1,5 @@
 import { expect, it } from "vitest"
-import { compareHDSrc } from "./compareHDSrc"
+import { fmtHDSrc } from "./fmtHDSrc"
 
 const example = [
   {
@@ -31,6 +31,6 @@ const example = [
 it("test url HD parser", () => {
   for (const item of example) {
     const { before, after } = item
-    expect(compareHDSrc(before)).toBe(after)
+    expect(fmtHDSrc(before)).toBe(after)
   }
 })

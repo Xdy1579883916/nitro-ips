@@ -8,21 +8,40 @@ Example of a simple image server using Nitro [IPX](https://github.com/unjs/ipx).
 nitro dev
 ```
 
-## Features
+## 🚀Features
 
 IPX enhancement, supports extracting high-definition original images of network images according to rules before
 proceeding to the next step
+
+Rules: [fmtHDSrc.ts](./utils/fmtHDSrc.ts)
+
+Open Config:  
+```javascript
+
+runtimeConfig: {
+  autoHD: true
+}
+```
+
+```diff
+// before
+- https://s.alicdn.com/@sc04/kf/H11924dfc8c5343a190912df9a1e305aci.jpg_250x250.jpg
+// after
++ https://s.alicdn.com/@sc04/kf/H11924dfc8c5343a190912df9a1e305aci.jpg
+```
 
 ## Usage
 
 ### 1 - some image url
 
 `http://localhost:3000/enlarge,f_jpg,s_800x800/https://s.alicdn.com/@sc04/kf/H11924dfc8c5343a190912df9a1e305aci.jpg`
+
 <img src="http://localhost:3000/enlarge,f_jpg,s_800x800/https://s.alicdn.com/@sc04/kf/H11924dfc8c5343a190912df9a1e305aci.jpg" />
 
 ### 2 - some svg url
 
 `http://localhost:3000/enlarge,f_png,s_800x800/https://s.alicdn.com/@img/imgextra/i2/O1CN01Zsnn5f28yyAQPbYyz_!!6000000008002-55-tps-70-70.svg`
+
 <img src="http://localhost:3000/enlarge,f_png,s_800x800/https://s.alicdn.com/@img/imgextra/i2/O1CN01Zsnn5f28yyAQPbYyz_!!6000000008002-55-tps-70-70.svg" />
 
 ## Modifiers

@@ -1158,7 +1158,7 @@ const regGroup = [
   },
 ]
 
-export function compareHDSrc(url: string) {
+export function fmtHDSrc(url: string) {
   if (url && url.match(/^data/)) {
     return url
   }

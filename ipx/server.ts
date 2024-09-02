@@ -18,7 +18,7 @@ import {
   getResponseHeader,
 } from "h3";
 import { IPX } from "./ipx";
-import {compareHDSrc} from "~~/utils/compareHDSrc";
+import {fmtHDSrc} from "~~/utils/fmtHDSrc";
 
 const MODIFIER_SEP = /[&,]/g;
 const MODIFIER_VAL_SEP = /[:=_]/;
@@ -48,9 +48,16 @@ export function createIPXH3Handler(ipx: IPX) {
       });
     }
 
-    try {
-      id = compareHDSrc(id);
-    } catch {}
+    // Read autoHD from runtime config
+    const { autoHD } = useRuntimeConfig()
+
+    if (autoHD) {
+      try {
+        id = fmtHDSrc(id);
+      } catch {
+        // console.error("fmtHDSrc error", e);
+      }
+    }
 
     // Contruct modifiers
     const modifiers: Record<string, string> = Object.create(null);
